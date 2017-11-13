@@ -2,7 +2,7 @@
 This is a ply based animator and command interpreter for logo.
 It is based on python and uses the following libraries :
 1. ply (lex.py and yacc.py)
-2. graphics.py
+2. graphics.py (open to see installation instruction)
 3. math
 4. time
 
