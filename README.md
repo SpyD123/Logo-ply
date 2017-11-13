@@ -1,5 +1,5 @@
 # Logo-ply
-This is a ply based animater and command interpreter for logo.
+This is a ply based animator and command interpreter for logo.
 It is based on python and uses the following libraries :
 1. ply (lex.py and yacc.py)
 2. graphics.py
