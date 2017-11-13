@@ -1,0 +1,9 @@
+to -ls rt 20 + fd 20 + lt 20 + fd 60 end
+to -ts rt 90 + fd 25 + rt 90 end
+to -rs fd 60 + lt 20 + fd 20 + rt 20 end
+to -res rt 90 + fd 40 + rt 90 end
+to -tr -ls + -ts + -rs + -res end
+to -cp pu + fd 80 + rt 90 + fd 20 + lt 90 + pd end
+to -cc repeat 360 [fd 2 + rt 1] end
+to -te pu + bk 100 + pd + -tr + -cp + left 90 + -cc end
+-te
