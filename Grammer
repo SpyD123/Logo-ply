@@ -1,0 +1,387 @@
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> expr
+Rule 2     expr -> command
+Rule 3     expr -> command PLUS expr
+Rule 4     command -> optionm NUMBER
+Rule 5     command -> REPEAT NUMBER LPAREN expr RPAREN
+Rule 6     command -> optionp
+Rule 7     optionm -> RIGHT
+Rule 8     optionm -> LEFT
+Rule 9     optionm -> FORW
+Rule 10    optionm -> BACK
+Rule 11    func -> FUNS NAME expr FUNE
+Rule 12    func -> NAME
+Rule 13    optionp -> PENU
+Rule 14    optionp -> PEND
+Rule 15    optionp -> CLR
+Rule 16    optionp -> func
+
+Terminals, with rules where they appear
+
+BACK                 : 10
+CLR                  : 15
+FORW                 : 9
+FUNE                 : 11
+FUNS                 : 11
+LEFT                 : 8
+LPAREN               : 5
+NAME                 : 11 12
+NUMBER               : 4 5
+PEND                 : 14
+PENU                 : 13
+PLUS                 : 3
+REPEAT               : 5
+RIGHT                : 7
+RPAREN               : 5
+error                : 
+
+Nonterminals, with rules where they appear
+
+command              : 2 3
+expr                 : 1 3 5 11
+func                 : 16
+optionm              : 4
+optionp              : 6
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . expr
+    (2) expr -> . command
+    (3) expr -> . command PLUS expr
+    (4) command -> . optionm NUMBER
+    (5) command -> . REPEAT NUMBER LPAREN expr RPAREN
+    (6) command -> . optionp
+    (7) optionm -> . RIGHT
+    (8) optionm -> . LEFT
+    (9) optionm -> . FORW
+    (10) optionm -> . BACK
+    (13) optionp -> . PENU
+    (14) optionp -> . PEND
+    (15) optionp -> . CLR
+    (16) optionp -> . func
+    (11) func -> . FUNS NAME expr FUNE
+    (12) func -> . NAME
+
+    REPEAT          shift and go to state 8
+    RIGHT           shift and go to state 16
+    LEFT            shift and go to state 13
+    FORW            shift and go to state 14
+    BACK            shift and go to state 7
+    PENU            shift and go to state 1
+    PEND            shift and go to state 6
+    CLR             shift and go to state 10
+    FUNS            shift and go to state 3
+    NAME            shift and go to state 4
+
+    optionm                        shift and go to state 2
+    statement                      shift and go to state 11
+    expr                           shift and go to state 5
+    command                        shift and go to state 9
+    func                           shift and go to state 12
+    optionp                        shift and go to state 15
+
+state 1
+
+    (13) optionp -> PENU .
+
+    PLUS            reduce using rule 13 (optionp -> PENU .)
+    $end            reduce using rule 13 (optionp -> PENU .)
+    FUNE            reduce using rule 13 (optionp -> PENU .)
+    RPAREN          reduce using rule 13 (optionp -> PENU .)
+
+
+state 2
+
+    (4) command -> optionm . NUMBER
+
+    NUMBER          shift and go to state 17
+
+
+state 3
+
+    (11) func -> FUNS . NAME expr FUNE
+
+    NAME            shift and go to state 18
+
+
+state 4
+
+    (12) func -> NAME .
+
+    PLUS            reduce using rule 12 (func -> NAME .)
+    FUNE            reduce using rule 12 (func -> NAME .)
+    $end            reduce using rule 12 (func -> NAME .)
+    RPAREN          reduce using rule 12 (func -> NAME .)
+
+
+state 5
+
+    (1) statement -> expr .
+
+    $end            reduce using rule 1 (statement -> expr .)
+
+
+state 6
+
+    (14) optionp -> PEND .
+
+    PLUS            reduce using rule 14 (optionp -> PEND .)
+    $end            reduce using rule 14 (optionp -> PEND .)
+    FUNE            reduce using rule 14 (optionp -> PEND .)
+    RPAREN          reduce using rule 14 (optionp -> PEND .)
+
+
+state 7
+
+    (10) optionm -> BACK .
+
+    NUMBER          reduce using rule 10 (optionm -> BACK .)
+
+
+state 8
+
+    (5) command -> REPEAT . NUMBER LPAREN expr RPAREN
+
+    NUMBER          shift and go to state 19
+
+
+state 9
+
+    (2) expr -> command .
+    (3) expr -> command . PLUS expr
+
+    RPAREN          reduce using rule 2 (expr -> command .)
+    $end            reduce using rule 2 (expr -> command .)
+    FUNE            reduce using rule 2 (expr -> command .)
+    PLUS            shift and go to state 20
+
+
+state 10
+
+    (15) optionp -> CLR .
+
+    PLUS            reduce using rule 15 (optionp -> CLR .)
+    $end            reduce using rule 15 (optionp -> CLR .)
+    FUNE            reduce using rule 15 (optionp -> CLR .)
+    RPAREN          reduce using rule 15 (optionp -> CLR .)
+
+
+state 11
+
+    (0) S' -> statement .
+
+
+
+state 12
+
+    (16) optionp -> func .
+
+    PLUS            reduce using rule 16 (optionp -> func .)
+    $end            reduce using rule 16 (optionp -> func .)
+    FUNE            reduce using rule 16 (optionp -> func .)
+    RPAREN          reduce using rule 16 (optionp -> func .)
+
+
+state 13
+
+    (8) optionm -> LEFT .
+
+    NUMBER          reduce using rule 8 (optionm -> LEFT .)
+
+
+state 14
+
+    (9) optionm -> FORW .
+
+    NUMBER          reduce using rule 9 (optionm -> FORW .)
+
+
+state 15
+
+    (6) command -> optionp .
+
+    PLUS            reduce using rule 6 (command -> optionp .)
+    $end            reduce using rule 6 (command -> optionp .)
+    FUNE            reduce using rule 6 (command -> optionp .)
+    RPAREN          reduce using rule 6 (command -> optionp .)
+
+
+state 16
+
+    (7) optionm -> RIGHT .
+
+    NUMBER          reduce using rule 7 (optionm -> RIGHT .)
+
+
+state 17
+
+    (4) command -> optionm NUMBER .
+
+    PLUS            reduce using rule 4 (command -> optionm NUMBER .)
+    $end            reduce using rule 4 (command -> optionm NUMBER .)
+    FUNE            reduce using rule 4 (command -> optionm NUMBER .)
+    RPAREN          reduce using rule 4 (command -> optionm NUMBER .)
+
+
+state 18
+
+    (11) func -> FUNS NAME . expr FUNE
+    (2) expr -> . command
+    (3) expr -> . command PLUS expr
+    (4) command -> . optionm NUMBER
+    (5) command -> . REPEAT NUMBER LPAREN expr RPAREN
+    (6) command -> . optionp
+    (7) optionm -> . RIGHT
+    (8) optionm -> . LEFT
+    (9) optionm -> . FORW
+    (10) optionm -> . BACK
+    (13) optionp -> . PENU
+    (14) optionp -> . PEND
+    (15) optionp -> . CLR
+    (16) optionp -> . func
+    (11) func -> . FUNS NAME expr FUNE
+    (12) func -> . NAME
+
+    REPEAT          shift and go to state 8
+    RIGHT           shift and go to state 16
+    LEFT            shift and go to state 13
+    FORW            shift and go to state 14
+    BACK            shift and go to state 7
+    PENU            shift and go to state 1
+    PEND            shift and go to state 6
+    CLR             shift and go to state 10
+    FUNS            shift and go to state 3
+    NAME            shift and go to state 4
+
+    expr                           shift and go to state 21
+    optionm                        shift and go to state 2
+    command                        shift and go to state 9
+    func                           shift and go to state 12
+    optionp                        shift and go to state 15
+
+state 19
+
+    (5) command -> REPEAT NUMBER . LPAREN expr RPAREN
+
+    LPAREN          shift and go to state 22
+
+
+state 20
+
+    (3) expr -> command PLUS . expr
+    (2) expr -> . command
+    (3) expr -> . command PLUS expr
+    (4) command -> . optionm NUMBER
+    (5) command -> . REPEAT NUMBER LPAREN expr RPAREN
+    (6) command -> . optionp
+    (7) optionm -> . RIGHT
+    (8) optionm -> . LEFT
+    (9) optionm -> . FORW
+    (10) optionm -> . BACK
+    (13) optionp -> . PENU
+    (14) optionp -> . PEND
+    (15) optionp -> . CLR
+    (16) optionp -> . func
+    (11) func -> . FUNS NAME expr FUNE
+    (12) func -> . NAME
+
+    REPEAT          shift and go to state 8
+    RIGHT           shift and go to state 16
+    LEFT            shift and go to state 13
+    FORW            shift and go to state 14
+    BACK            shift and go to state 7
+    PENU            shift and go to state 1
+    PEND            shift and go to state 6
+    CLR             shift and go to state 10
+    FUNS            shift and go to state 3
+    NAME            shift and go to state 4
+
+    expr                           shift and go to state 23
+    optionm                        shift and go to state 2
+    command                        shift and go to state 9
+    func                           shift and go to state 12
+    optionp                        shift and go to state 15
+
+state 21
+
+    (11) func -> FUNS NAME expr . FUNE
+
+    FUNE            shift and go to state 24
+
+
+state 22
+
+    (5) command -> REPEAT NUMBER LPAREN . expr RPAREN
+    (2) expr -> . command
+    (3) expr -> . command PLUS expr
+    (4) command -> . optionm NUMBER
+    (5) command -> . REPEAT NUMBER LPAREN expr RPAREN
+    (6) command -> . optionp
+    (7) optionm -> . RIGHT
+    (8) optionm -> . LEFT
+    (9) optionm -> . FORW
+    (10) optionm -> . BACK
+    (13) optionp -> . PENU
+    (14) optionp -> . PEND
+    (15) optionp -> . CLR
+    (16) optionp -> . func
+    (11) func -> . FUNS NAME expr FUNE
+    (12) func -> . NAME
+
+    REPEAT          shift and go to state 8
+    RIGHT           shift and go to state 16
+    LEFT            shift and go to state 13
+    FORW            shift and go to state 14
+    BACK            shift and go to state 7
+    PENU            shift and go to state 1
+    PEND            shift and go to state 6
+    CLR             shift and go to state 10
+    FUNS            shift and go to state 3
+    NAME            shift and go to state 4
+
+    expr                           shift and go to state 25
+    optionm                        shift and go to state 2
+    command                        shift and go to state 9
+    func                           shift and go to state 12
+    optionp                        shift and go to state 15
+
+state 23
+
+    (3) expr -> command PLUS expr .
+
+    RPAREN          reduce using rule 3 (expr -> command PLUS expr .)
+    $end            reduce using rule 3 (expr -> command PLUS expr .)
+    FUNE            reduce using rule 3 (expr -> command PLUS expr .)
+
+
+state 24
+
+    (11) func -> FUNS NAME expr FUNE .
+
+    PLUS            reduce using rule 11 (func -> FUNS NAME expr FUNE .)
+    FUNE            reduce using rule 11 (func -> FUNS NAME expr FUNE .)
+    $end            reduce using rule 11 (func -> FUNS NAME expr FUNE .)
+    RPAREN          reduce using rule 11 (func -> FUNS NAME expr FUNE .)
+
+
+state 25
+
+    (5) command -> REPEAT NUMBER LPAREN expr . RPAREN
+
+    RPAREN          shift and go to state 26
+
+
+state 26
+
+    (5) command -> REPEAT NUMBER LPAREN expr RPAREN .
+
+    PLUS            reduce using rule 5 (command -> REPEAT NUMBER LPAREN expr RPAREN .)
+    $end            reduce using rule 5 (command -> REPEAT NUMBER LPAREN expr RPAREN .)
+    FUNE            reduce using rule 5 (command -> REPEAT NUMBER LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 5 (command -> REPEAT NUMBER LPAREN expr RPAREN .)
